@@ -11,7 +11,7 @@ router.get("/posts", async (req, res) => {
     res.status(500).json({ message: err.message });
   }
 });
-
+// Update posts
 router.put("/posts/:id", async (req, res) => {
     try {
       const posts = await Post.findByIdAndUpdate(req.params.id,req.body,{new:true});

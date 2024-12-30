@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { getAllPosts } from "../api";
+import PostCard from "./PostCard";
 
 const HomePage = () => {
   const [posts, setPosts] = useState([]);

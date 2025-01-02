@@ -5,17 +5,17 @@ import { useNavigate } from "react-router-dom";
 const CreatePost = () => {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [author, setAuthor] = useState(""); // Optional field
+  const [author, setAuthor] = useState(""); 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Prepare the post data
+    
     const newPost = {
       title,
       content,
-      author: author || "Anonymous", // Default to "Anonymous" if not provided
+      author: author || "Anonymous", 
     };
 
     fetch("http://localhost:4001/posts", {
@@ -27,7 +27,7 @@ const CreatePost = () => {
     })
       .then((res) => {
         if (res.ok) {
-          navigate("/"); // Redirect to the homepage after successful creation
+          navigate("/"); 
         } else {
           throw new Error("Failed to create post");
         }

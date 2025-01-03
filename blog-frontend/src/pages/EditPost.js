@@ -1,43 +1,45 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import "./CreatePost.css";
+import React, { useEffect, useState } from "react";
+import { useParams, useNavigate } from "react-router-dom";
 
-const CreatePost = () => {
+const EditPost = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
-  const [author, setAuthor] = useState(""); 
-  const navigate = useNavigate();
+  const [author, setAuthor] = useState("");
+
+  useEffect(() => {
+    fetch(`http://localhost:4001/posts/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        setTitle(data.title);
+        setContent(data.content);
+        setAuthor(data.author || ""); 
+      })
+      .catch((err) => console.error(err));
+  }, [id]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
-    const newPost = {
-      title,
-      content,
-      author: author || "Anonymous", 
-    };
+    const updatedPost = { title, content, author };
 
-    fetch("http://localhost:4003/posts", {
-      method: "POST",
+    fetch(`http://localhost:4001/posts/${id}`, {
+      method: "PUT",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(newPost),
+      body: JSON.stringify(updatedPost),
     })
-      .then((res) => {
-        if (res.ok) {
-          navigate("/"); 
-        } else {
-          throw new Error("Failed to create post");
-        }
-      })
+      .then((res) => res.json())
+      .then(() => navigate(`/posts/${id}`))
       .catch((err) => console.error(err));
   };
 
   return (
     <div>
-      <h1>Create New Post</h1>
+      <h1>Edit Post</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label>Title:</label>
@@ -62,13 +64,12 @@ const CreatePost = () => {
             type="text"
             value={author}
             onChange={(e) => setAuthor(e.target.value)}
-            placeholder=""
           />
         </div>
-        <button type="submit">Create Post</button>
+        <button type="submit">Update Post</button>
       </form>
     </div>
   );
 };
 
-export default CreatePost;
+export default EditPost;

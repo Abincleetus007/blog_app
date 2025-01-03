@@ -10,7 +10,7 @@ const EditPost = () => {
   const [author, setAuthor] = useState("");
 
   useEffect(() => {
-    fetch(`http://localhost:4001/posts/${id}`)
+    fetch(`https://blog-app-2-r1uc.onrender.com/posts/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setTitle(data.title);
@@ -25,7 +25,7 @@ const EditPost = () => {
 
     const updatedPost = { title, content, author };
 
-    fetch(`http://localhost:4001/posts/${id}`, {
+    fetch(`https://blog-app-2-r1uc.onrender.com/posts/${id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

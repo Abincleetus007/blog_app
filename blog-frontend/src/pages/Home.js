@@ -6,7 +6,7 @@ const Home = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4001/posts")
+    fetch("https://blog-app-2-r1uc.onrender.com/posts")
       .then((res) => res.json())
       .then((data) => setPosts(data))
       .catch((err) => console.error(err));

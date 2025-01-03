@@ -8,7 +8,7 @@ const PostDetails = () => {
   const [post, setPost] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:4001/posts/${id}`)
+    fetch(`https://blog-app-2-r1uc.onrender.com/posts/${id}`)
       .then((res) => res.json())
       .then((data) => setPost(data))
       .catch((err) => console.error(err));
@@ -16,7 +16,7 @@ const PostDetails = () => {
 
   const handleDelete = () => {
     if (window.confirm("Are you sure you want to delete this post?")) {
-      fetch(`http://localhost:4001/posts/${id}`, {
+      fetch(`https://blog-app-2-r1uc.onrender.com/posts/${id}`, {
         method: "DELETE",
       })
         .then((res) => {

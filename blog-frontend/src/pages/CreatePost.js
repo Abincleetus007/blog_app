@@ -18,7 +18,7 @@ const CreatePost = () => {
       author: author || "Anonymous", 
     };
 
-    fetch("http://localhost:4003/posts", {
+    fetch("https://blog-app-2-r1uc.onrender.com/posts", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

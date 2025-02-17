@@ -3,11 +3,9 @@
 
 ## Blog Application
 ### *Screenshots*
-
-
-
-![Uploading Screenshot 2025-02-17 211940.png…]()
+![Screenshot 2025-02-17 211940](https://github.com/user-attachments/assets/ce710861-974f-4636-a2c9-c4c3a6a6fd52)
 ## Live Demo
+
 
 https://incomparable-panda-e6d6cc.netlify.app/
 
